@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Francisco Display 18
+font pango:System San Francisco Display 16
 #font pango:monospace 16
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -49,7 +49,9 @@ bindsym $mod+m exec /opt/microsoft/msedge-dev/microsoft-edge-dev
 # Monitor config.
 #bindsym $mod+o exec xrandr --output eDP-1 --below DVI-I-3-2 --output DVI-I-3-2 --primary --auto --output DVI-I-2-1 --left-of DVI-I-3-2
 # Lock $mod+shift+p
-bindsym $mod+shift+x exec i3lock -i /home/jofehse/.config/i3/ls.png -t
+#bindsym $mod+shift+x exec i3lock -i /home/jofehse/.config/i3/ls.png -t
+bindsym $mod+shift+x exec i3lock -i /home/jofehse/.config/i3/ls.png -t & sleep 5 && xset dpms force off
+#bindsym $mod+shift+x exec /home/jofehse/.config/i3/ls.sh & sleep 60 && xset dpms force off
 # Background
 exec_always feh --no-fehbg --bg-fill /home/jofehse/.config/i3/bg.png
 bindsym $mod+shift+v exec pavucontrol
@@ -61,7 +63,7 @@ assign [class="msedge"] 1
 exec /opt/microsoft/msedge-dev/msedge
 ########################################
 set $mode_display Config monitor resolution - 3 Monitors (d) - Surface Only (t)
-
+xinput map-to-output 10 DP-4
 mode "$mode_display" {
     
      bindsym t exec --no-startup-id xrandr --output eDP-1 --mode 3000x2000 --pos 0x1080 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off --output DVI-I-5-4 --off --output DVI-I-4-3 --off --output DVI-I-3-2 --primary --mode 2560x1440 --pos 3000x0 --rotate normal --output DVI-I-2-1 --mode 2560x1080 --pos 440x0 --rotate normal
@@ -213,11 +215,30 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
+	colors {
+		background $bg-color
+	    	separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
 }
 bindsym $mod+shift+m exec /opt/microsoft/msedge-dev/msedge
 for_window [class="Pavucontrol"] floating enable
+exec --no-startup-id setxkbmap -model pc105 -layout us -option grp:alt_shift_toggle -rules evdev
