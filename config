@@ -63,7 +63,7 @@ assign [class="msedge"] 1
 exec /opt/microsoft/msedge-dev/msedge
 ########################################
 set $mode_display Config monitor resolution - 3 Monitors (d) - Surface Only (t)
-xinput map-to-output 10 DP-4
+exec_always xinput map-to-output 10 DP-4
 mode "$mode_display" {
     
      bindsym t exec --no-startup-id xrandr --output eDP-1 --mode 3000x2000 --pos 0x1080 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off --output DVI-I-5-4 --off --output DVI-I-4-3 --off --output DVI-I-3-2 --primary --mode 2560x1440 --pos 3000x0 --rotate normal --output DVI-I-2-1 --mode 2560x1080 --pos 440x0 --rotate normal
