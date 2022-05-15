@@ -60,7 +60,7 @@ bindsym $mod+shift+g exec gnome-control-center
 bindsym $mod+shift+t exec thunar
 ######## Startup applications ##########
 assign [class="msedge"] 1
-exec /opt/microsoft/msedge-dev/msedge
+#exec --no-start /opt/microsoft/msedge-dev/msedge
 ########################################
 set $mode_display Config monitor resolution - 3 Monitors (d) - Surface Only (t)
 exec_always xinput map-to-output 10 DP-4
@@ -76,6 +76,8 @@ mode "$mode_display" {
 
 bindsym $mod+x mode "$mode_display"
 
+#exec --no-startup-id ~/.config/i3/polybar.sh
+exec_always ~/.config/i3/polybar.sh
 ########################################
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -228,17 +230,17 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-	colors {
-		background $bg-color
-	    	separator #757575
-		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	}
-}
+#bar {
+#        status_command i3status
+#	colors {
+#		background $bg-color
+#	    	separator #757575
+#		#                  border             background         text
+#		focused_workspace  $bg-color          $bg-color          $text-color
+#		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+#	}
+#}
 bindsym $mod+shift+m exec /opt/microsoft/msedge-dev/msedge
 for_window [class="Pavucontrol"] floating enable
 exec --no-startup-id setxkbmap -model pc105 -layout us -option grp:alt_shift_toggle -rules evdev
