@@ -14,7 +14,7 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:System San Francisco Display 16
-#font pango:monospace 16
+#font pango:monospace 15
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -29,7 +29,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -45,25 +45,27 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # 
 ########################################
 # Edge $mod+m
-bindsym $mod+m exec /opt/microsoft/msedge-dev/microsoft-edge-dev
+bindsym $mod+m exec /opt/microsoft/msedge/msedge
 # Monitor config.
 #bindsym $mod+o exec xrandr --output eDP-1 --below DVI-I-3-2 --output DVI-I-3-2 --primary --auto --output DVI-I-2-1 --left-of DVI-I-3-2
 # Lock $mod+shift+p
 #bindsym $mod+shift+x exec i3lock -i /home/jofehse/.config/i3/ls.png -t
 bindsym $mod+shift+x exec i3lock -i /home/jofehse/.config/i3/ls.png -t & sleep 5 && xset dpms force off
+bindsym $mod+shift+u exec xset dpms force on
 #bindsym $mod+shift+x exec /home/jofehse/.config/i3/ls.sh & sleep 60 && xset dpms force off
 # Background
 exec_always feh --no-fehbg --bg-fill /home/jofehse/.config/i3/bg.png
 bindsym $mod+shift+v exec pavucontrol
 bindsym --release Shift+Print exec ~/.config/i3/capture.sh 
 bindsym $mod+shift+g exec gnome-control-center
-bindsym $mod+shift+t exec thunar
+bindsym $mod+shift+t exec "thunar ./"
 ######## Startup applications ##########
 assign [class="msedge"] 1
 #exec --no-start /opt/microsoft/msedge-dev/msedge
 ########################################
 set $mode_display Config monitor resolution - 3 Monitors (d) - Surface Only (t)
 exec_always xinput map-to-output 10 DP-4
+
 mode "$mode_display" {
     
      bindsym t exec --no-startup-id xrandr --output eDP-1 --mode 3000x2000 --pos 0x1080 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off --output DVI-I-5-4 --off --output DVI-I-4-3 --off --output DVI-I-3-2 --primary --mode 2560x1440 --pos 3000x0 --rotate normal --output DVI-I-2-1 --mode 2560x1080 --pos 440x0 --rotate normal
@@ -75,7 +77,8 @@ mode "$mode_display" {
 }
 
 bindsym $mod+x mode "$mode_display"
-
+bindsym $mod+shift+i exec setxkbmap -model pc105 -layout us -variant intl #-option grp:alt_shift_toggle
+bindsym $mod+shift+o exec setxkbmap -model pc105 -layout us  #-option grp:alt_shift_toggle
 #exec --no-startup-id ~/.config/i3/polybar.sh
 exec_always ~/.config/i3/polybar.sh
 ########################################
@@ -183,7 +186,7 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-assign [class="Pavucontrol"] 3
+assign [class="Pavucontrol"] 3 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -241,6 +244,9 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 #		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 #	}
 #}
+bindsym $mod+n exec /home/jofehse/.screenlayout/ub2204_NoNvidia.sh
 bindsym $mod+shift+m exec /opt/microsoft/msedge-dev/msedge
 for_window [class="Pavucontrol"] floating enable
-exec --no-startup-id setxkbmap -model pc105 -layout us -option grp:alt_shift_toggle -rules evdev
+for_window [class="Pavucontrol"] floating resize set 640 400
+exec --no-startup-id setxkbmap -model pc105 -layout us -variant nativo-us -option grp:alt_shift_toggle #-rules evdev
+
