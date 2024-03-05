@@ -62,7 +62,7 @@ bindsym $mod+shift+u exec xset dpms force on
 bindsym $mod+shift+v exec pavucontrol
 bindsym --release Shift+Print exec ~/.config/i3/capture.sh 
 bindsym $mod+shift+g exec gnome-control-center
-bindsym $mod+shift+t exec "thunar ./"
+bindsym $mod+shift+b exec "thunar ./"
 ######## Startup applications ##########
 assign [class="msedge"] 1
 #exec --no-start /opt/microsoft/msedge-dev/msedge
@@ -81,18 +81,33 @@ bindsym Escape mode "default"
 }
 
 bindsym $mod+x mode "$mode_display"
-bindsym $mod+shift+i exec setxkbmap -model pc105 -layout us -variant intl #-option grp:alt_shift_toggle
-bindsym $mod+shift+o exec setxkbmap -model pc105 -layout us  #-option grp:alt_shift_toggle
-bindsym $mod+shift+b exec /opt/microsoft/msedge/msedge --profile-directory=Default --app-id=hkafekgjheagieocalglhlfidkeiicgp "--app-url=https://teams.microsoft.com/_#/conversations/unknown?groupId=4e24cc02-a532-453a-bfeb-0089595e72e7&threadId=19:55513965ddd549d39fd275acf9f8c35f@thread.skype&messageId=1656936106519&ctx=channel" 
-bindsym $mod+shift+z exec /opt/microsoft/msedge/msedge --profile-directory=Default --app-id=mmnagoaognahelabbnflgohamllpjhfc --app-url=https://outlook.office.com/mail/inbox/id/AAQkAGEyODA2NTRjLTk0ZmMtNDc2NS04MTkwLTVlNDJkODdlMTViZAAQABXrqIuMgkXfjGEDY%2B6yGZM%3D
+bindsym $mod+i exec setxkbmap -model pc105 -layout us -variant intl #-option grp:alt_shift_toggle
+bindsym $mod+o exec setxkbmap -model pc105 -layout us  #-option grp:alt_shift_toggle
+#Teams app
+bindsym $mod+shift+t exec /opt/microsoft/msedge/msedge "--profile-directory=Profile 8" --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo "--app-url=https://teams.microsoft.com/v2"
+
+bindsym $mod+shift+z exec /opt/microsoft/msedge/msedge "--profile-directory=Profile 8" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn --app-url=https://outlook.office.com/mail/
+# Calendar
+bindsym $mod+c exec /opt/microsoft/msedge/msedge "--profile-directory=Profile 8" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn --app-url=https://outlook.office.com/mail/ --app-launch-url-for-shortcuts-menu-item=https://outlook.office.com/calendar
+# Onenote
+bindsym $mod+shift+o exec /opt/microsoft/msedge/msedge "--profile-directory=Profile 8" --app-id=ocdlmjhbenodhlknglojajgokahchlkk "--app-url=https://www.microsoft365.com/launch/onenote?auth=2"
 #Work 2 profile
-bindsym $mod+shift+w exec /opt/microsoft/msedge/msedge --profile-directory='Profile 1'
+bindsym $mod+shift+w exec /opt/microsoft/msedge/msedge --profile-directory='Profile 7'
 #Personal profile
-bindsym $mod+shift+p exec /opt/microsoft/msedge/msedge --profile-directory='Profile 2'
+bindsym $mod+shift+p exec /opt/microsoft/msedge/msedge --profile-directory='Profile 6'
+# Work profile 1
+bindsym $mod+shift+m /opt/microsoft/msedge-dev/msedge --profile-directory='Profile 8'
+# Onedrive
+bindsym $mod+shift+d exec /opt/microsoft/msedge/msedge --profile-directory=Default --app-id=lmffighghoamljnbhgbamnbfdailkooc --app-url=https://microsoft-my.sharepoint.com/personal/jofehse_microsoft_com/_layouts/15/onedrive.aspx
 #exec --no-startup-id ~/.config/i3/polybar.sh
 # Default Screen mode - nvidia, 22.04, 3 Monitors, lenovo on top.
 exec --no-startup-id xrandr --output DP-0 --off --output DP-1 --mode 2560x1440 --pos 2560x1080 --rotate normal --output DP-2 --off --output DP-3 --mode 2560x1080 --pos 0x1080 --rotate normal --output DP-4 --mode 1920x1080 --pos 1651x0 --rotate normal --output DP-5 --off --output DP-6 --off    
 exec_always ~/.config/i3/polybar.sh
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 1 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 1 # decrease screen brightness
+# Binds mod+bracketright to increase screen brightness and mod+bracketleft to decrease screen brightness
+bindsym $mod+bracketright exec --no-startup-id light -A 1 # increase screen brightness
+bindsym $mod+bracketleft exec --no-startup-id light -U 1 # decrease screen brightness
 
 ########################################
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -257,10 +272,9 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 #		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 #	}
 #}
-bindsym $mod+n exec /home/jofehse/.screenlayout/ub2204_NoNvidia.sh
-bindsym $mod+shift+m /opt/microsoft/msedge-dev/msedge
+#bindsym $mod+n exec /home/jofehse/.screenlayout/ub2204_NoNvidia.sh
 for_window [class="Pavucontrol"] floating enable
-for_window [class="Pavucontrol"] floating resize set 640 400
+for_window [class="Pavucontrol"] floating resize set 800 600
 exec --no-startup-id setxkbmap -model pc105 -layout us -variant nativo-us -option grp:alt_shift_toggle #-rules evdev
 
 
