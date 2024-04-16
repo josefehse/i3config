@@ -47,7 +47,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym $mod+Shift+f exec ~/fixvideo.sh
 bindsym $mod+Shift+n exec code ~/.config/i3/config
 # Edge $mod+m
-bindsym $mod+m exec /opt/microsoft/msedge/msedge
+# bindsym $mod+ exec /opt/microsoft/msedge/msedge
+# remmina
+bindsym $mod+m exec /usr/bin/remmina
 # Monitor config.
 #bindsym $mod+o exec xrandr --output eDP-1 --below DVI-I-3-2 --output DVI-I-3-2 --primary --auto --output DVI-I-2-1 --left-of DVI-I-3-2
 # Lock $mod+shift+p
