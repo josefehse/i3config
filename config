@@ -46,10 +46,12 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 ########################################
 bindsym $mod+Shift+f exec ~/fixvideo.sh
 bindsym $mod+Shift+n exec code ~/.config/i3/config
+# vpn /opt/microsoft/microsoft-azurevpnclient/microsoft-azurevpnclient
+bindsym $mod+n exec /opt/microsoft/microsoft-azurevpnclient/microsoft-azurevpnclient
 # Edge $mod+m
-# bindsym $mod+ exec /opt/microsoft/msedge/msedge
+bindsym $mod+m exec /opt/microsoft/msedge/msedge
 # remmina
-bindsym $mod+m exec /usr/bin/remmina
+bindsym $mod+shift+m exec /usr/bin/remmina
 # Monitor config.
 #bindsym $mod+o exec xrandr --output eDP-1 --below DVI-I-3-2 --output DVI-I-3-2 --primary --auto --output DVI-I-2-1 --left-of DVI-I-3-2
 # Lock $mod+shift+p
@@ -61,7 +63,7 @@ bindsym $mod+shift+u exec xset dpms force on
 #bindsym $mod+shift+x exec /home/jofehse/.config/i3/ls.sh & sleep 60 && xset dpms force off
 # Background
 #exec_always --no-startup-id feh --no-fehbg --bg-fill /home/jofehse/.config/i3/bg.png
-bindsym $mod+shift+v exec pavucontrol
+bindsym $mod+shift+a exec pavucontrol
 bindsym --release Shift+Print exec ~/.config/i3/capture.sh 
 bindsym $mod+shift+g exec gnome-control-center
 bindsym $mod+shift+b exec "thunar ./"
@@ -85,26 +87,30 @@ bindsym Escape mode "default"
 bindsym $mod+x mode "$mode_display"
 bindsym $mod+i exec setxkbmap -model pc105 -layout us -variant intl #-option grp:alt_shift_toggle
 bindsym $mod+o exec setxkbmap -model pc105 -layout us  #-option grp:alt_shift_toggle
-#Teams app
-bindsym $mod+shift+t exec /opt/microsoft/msedge/msedge "--profile-directory=Profile 8" --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo "--app-url=https://teams.microsoft.com/v2"
+#Visio
+bindsym $mod+shift+v exec /opt/microsoft/msedge/msedge "--profile-directory=Profile 8" --app-id=naelaoacjbfihbbnheockacgdncjdbdf "--app-url=https://microsoft-my.sharepoint.com/personal/jofehse_microsoft_com/_layouts/15/doc.aspx?sourcedoc={f503df1b-c3f4-4608-ae95-552250276eeb}&action=edit"
 
-bindsym $mod+shift+z exec /opt/microsoft/msedge/msedge "--profile-directory=Profile 8" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn --app-url=https://outlook.office.com/mail/
+#Teams app
+bindsym $mod+shift+t exec /opt/microsoft/msedge/msedge "--profile-directory=Profile 15" --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo "--app-url=https://teams.microsoft.com/v2/?clientType=pwa"
+
+bindsym $mod+shift+z exec /opt/microsoft/msedge/msedge "--profile-directory=Profile 15" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn --app-url=https://outlook.office.com/mail/
 # Calendar
 bindsym $mod+c exec /opt/microsoft/msedge/msedge "--profile-directory=Profile 8" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn --app-url=https://outlook.office.com/mail/ --app-launch-url-for-shortcuts-menu-item=https://outlook.office.com/calendar
 # Onenote
 bindsym $mod+shift+o exec /opt/microsoft/msedge/msedge "--profile-directory=Profile 8" --app-id=ocdlmjhbenodhlknglojajgokahchlkk "--app-url=https://www.microsoft365.com/launch/onenote?auth=2"
 #Work 2 profile
-bindsym $mod+shift+w exec /opt/microsoft/msedge/msedge --profile-directory='Profile 7'
+bindsym $mod+shift+w exec /opt/microsoft/msedge/msedge --profile-directory='Profile 12'
 #Personal profile
-bindsym $mod+shift+p exec /opt/microsoft/msedge/msedge --profile-directory='Profile 6'
+bindsym $mod+shift+p exec /opt/microsoft/msedge/msedge --profile-directory='Profile 10'
 # Work profile 1
-bindsym $mod+shift+m /opt/microsoft/msedge-dev/msedge --profile-directory='Profile 8'
+#bindsym $mod+shift+m /opt/microsoft/msedge-dev/msedge --profile-directory='Profile 8'
 # Onedrive
 bindsym $mod+shift+d exec /opt/microsoft/msedge/msedge --profile-directory=Default --app-id=lmffighghoamljnbhgbamnbfdailkooc --app-url=https://microsoft-my.sharepoint.com/personal/jofehse_microsoft_com/_layouts/15/onedrive.aspx
 #exec --no-startup-id ~/.config/i3/polybar.sh
 # Default Screen mode - nvidia, 22.04, 3 Monitors, lenovo on top.
 exec --no-startup-id xrandr --output DP-0 --off --output DP-1 --mode 2560x1440 --pos 2560x1080 --rotate normal --output DP-2 --off --output DP-3 --mode 2560x1080 --pos 0x1080 --rotate normal --output DP-4 --mode 1920x1080 --pos 1651x0 --rotate normal --output DP-5 --off --output DP-6 --off    
 exec_always ~/.config/i3/polybar.sh
+exec_always ~/setmouse.sh
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 1 # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 1 # decrease screen brightness
 # Binds mod+bracketright to increase screen brightness and mod+bracketleft to decrease screen brightness
